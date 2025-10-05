@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'DCsans' ;
+    src: url(assets/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf);
+}
+
+#selection-body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background: url(assets/resurant.jpg);
+}
+
+#selection-main{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+
+#selection-form{
+    background-color: rgb(170, 169, 169);
+    width: 30vw;
+    height: 40vh;
+    box-sizing: border-box;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: DCsans;
+}
+
+#selection-title{
+    color: white;
+}
+
+.selection-btns{
+    width: 80%;
+    height: 20%;
+    background-color: white;
+    border-radius: 16px;
+    border: none;
+    margin: 8px;
+    transition: all 0.3s;
+    font-family: DCsans;
+    font-size: 20px;
+}
+
+.selection-btns:hover{
+    cursor: pointer;
+    scale: 105%;
+    filter: brightness(90%);
+}
+
+#signature{
+    color: white;
+    font-family: DCsans;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#HMW-body{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#HMW-header{
+    width: 85vw;
+    box-sizing: border-box;
+    padding: 1.5vw;
+    display: flex;
+    font-family: DCsans;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    margin: 0px;
+    font-size: 20px;
+}
+
+#HMW-title{
+    font-size: 2vw;
+    color: black;
+    font-weight: bold;
+    margin: 0px;
+}
+
+#HMW-tables-wrapper{
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.table{
+    font-family: DCsans;
+    color: white;
+    width: 10vw;
+    height: 10vw;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5vw;
+    margin: 8px;
+    transition: all 0.3s;
+}
+
+.table:hover{
+    scale: 105%;
+}
+
+#HMW-popup{
+    z-index: 2;
+    position: fixed;
+    top: 70vh;
+    left: 35vw;
+    width: 30vw;
+    height: 25vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    font-size: 24px;
+    font-family: DCsans;
+    border-radius: 16px;
+}
+
+#HMW-popup-wrapper{
+    display: none;
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    min-height: 100vw;
+    z-index: 0;
+    backdrop-filter: blur(8px);
+}
+
+#HMW-popup-btns-wrapper{
+    display: flex;
+}
