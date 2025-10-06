@@ -35,11 +35,31 @@ tables.forEach((table) => {
         })
 
         HMW_popup_yes.addEventListener("click", () => {
-            //table called
-
-            html.style.overflow = "auto"
+            addActiveTableAndContinue(tableID, tableHTML)
         })
     })
 })
 
-
+function addActiveTableAndContinue(t, tHTML){     //send table to php and continue formatting tables
+    fetch('../backend/saveTable.php', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `t=${t}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data)
+        /*if(data == true){
+            tHTML.style.backgroundColor = "var(--GREEN)"
+            HMW_popup_wrapper.style.display = "none"
+            tHTML.style.zIndex = -1
+            html.style.overflow = "auto"
+        } else {
+            alert("no bueno")
+        }
+        */
+    })
+    .catch(error => console.error(error));
+}

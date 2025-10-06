@@ -31,3 +31,11 @@ The main goal of the host is to **send calls**.
 The pizzeria is the *main client*: When the user selects "Pizzeria (Client)" the web server will open the CMW (**Client Managment Window**) which is composed of the same tables of the host.
 
 The main difference between the client and the host is that, **the client can <ins>NOT</ins> send calls** and can not control a table, the main *host task* the client can do is **confirm that a table has been completed** and thus, the client can only operate on GREEN tables [(1)](IDEAS.md).
+
+## V1 - JS BASED (05/05/2025)
+
+The CMS-V1 is **JS Based**, this means that most of the backend and frontend logic is made with javaScript, this is done just because of the *short time* to make sure that the first version is up and running.
+
+Also in this version the tables heve been written *manually* for the same reasons.
+
+In the next version I'm planning to make all of the logic with **php**, since it is safer, more rubust and need less LOC to make more funcionalities.
