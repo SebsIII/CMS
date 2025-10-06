@@ -3,6 +3,12 @@
     src: url(assets/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf);
 }
 
+:root {
+    --RED : #FF3131;
+    --GREEN : #7ED957;
+    --BLUE: #5170FF;
+}
+
 #selection-body{
     width: 100vw;
     height: 100vh;
@@ -83,6 +89,7 @@
     color: gray;
     margin: 0px;
     font-size: 20px;
+    z-index: 3;
 }
 
 #HMW-title{
@@ -97,14 +104,16 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 0px 0px 100vh 0px;
 }
 
 .table{
+    position: relative;
     font-family: DCsans;
     color: white;
     width: 10vw;
     height: 10vw;
-    background-color: red;
+    background-color: var(--RED);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,9 +128,6 @@
 
 #HMW-popup{
     z-index: 2;
-    position: fixed;
-    top: 70vh;
-    left: 35vw;
     width: 30vw;
     height: 25vh;
     background-color: rgba(255, 255, 255, 0.9);
@@ -137,13 +143,59 @@
 #HMW-popup-wrapper{
     display: none;
     position: absolute;
-    top: 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-end;
     width: 100vw;
-    min-height: 100vw;
-    z-index: 0;
+    height: 100vh;
+    z-index: 1;
     backdrop-filter: blur(8px);
 }
 
 #HMW-popup-btns-wrapper{
     display: flex;
+    width: 90%;
+    height: 5vh;
+}
+
+.popup-btn{
+    width: 50%;
+    height: 100%;
+    margin: 8px;
+    border: none;
+    border-radius: 16px;
+    transition: all 0.3s;
+    font-family: DCSans;
+    font-size: 20px;
+}
+
+#HMW-popup-yes{
+    background-color: var(--GREEN);
+}
+
+#HMW-popup-no{
+    background-color: var(--RED);
+}
+
+.popup-btn:hover{
+    filter: brightness(80%);
+    scale: 1.05;
+}
+
+@media screen and (max-width: 1280px) {
+
+    #selection-form{
+        width: 90vw;
+        text-align: center;
+    }
+
+    .table{
+        width: 25vw;
+        height: 25vw;
+        font-size: 20px;
+    }
+
+    #HMW-popup{
+        width: 80vw;
+    }
 }
