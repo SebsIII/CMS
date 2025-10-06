@@ -78,7 +78,7 @@
     align-items: center;
 }
 
-#HMW-header{
+header{
     width: 85vw;
     box-sizing: border-box;
     padding: 1.5vw;
@@ -92,7 +92,7 @@
     z-index: 3;
 }
 
-#HMW-title{
+.title{
     font-size: 2vw;
     color: black;
     font-weight: bold;
