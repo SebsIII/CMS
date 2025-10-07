@@ -5,9 +5,20 @@ let HMW_popup_wrapper = document.getElementById("HMW-popup-wrapper")
 let HMW_popup_yes = document.getElementById("HMW-popup-yes")
 let HMW_popup_no = document.getElementById("HMW-popup-no")
 
-let tableID, tableHTML, table
+let tableID, tableHTML, table, alreadyActivetables
 
-tables.forEach((table) => {
+//EXECUT getActiveTables.php at startup to update tables
+
+(async () => {
+    alreadyActivetables = await getActiveTables();
+    console.log(alreadyActivetables)
+    for (let key in alreadyActivetables){
+        table = document.getElementById(key)
+        table.style.backgroundColor = "black"
+    }
+})();
+
+tables.forEach((table) => {         //NOW THE TABLES HAVE IDs SO OPTIMIZE THIS FUNC
     table.addEventListener("click", () => {
         tableID = null
         tableHTML = null        //reset vars
@@ -62,4 +73,23 @@ function addActiveTableAndContinue(t, tHTML){     //send table to php and contin
         
     })
     .catch(error => console.error(error));
+}
+
+
+async function getActiveTables(){ 
+    try{
+        const response = await fetch('../backend/getActiveTables.php', {
+                method: 'GET', 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+        const data = await response.json()
+        return JSON.parse(data)
+        
+    } catch (error) {
+        console.error(error)
+        return null;
+    }
+    
 }
