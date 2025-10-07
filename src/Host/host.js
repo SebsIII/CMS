@@ -5,7 +5,7 @@ let HMW_popup_wrapper = document.getElementById("HMW-popup-wrapper")
 let HMW_popup_yes = document.getElementById("HMW-popup-yes")
 let HMW_popup_no = document.getElementById("HMW-popup-no")
 
-let tableID, tableHTML
+let tableID, tableHTML, table
 
 tables.forEach((table) => {
     table.addEventListener("click", () => {
@@ -27,17 +27,18 @@ tables.forEach((table) => {
         table.style.zIndex = 2
         table.style.backgroundColor = "var(--BLUE)"
         
-        HMW_popup_no.addEventListener("click",() => {
-            table.style.backgroundColor = "var(--RED)"
-            HMW_popup_wrapper.style.display = "none"
-            table.style.zIndex = 0
-            html.style.overflow = "auto"
-        })
-
-        HMW_popup_yes.addEventListener("click", () => {
-            addActiveTableAndContinue(tableID, tableHTML)
-        })
     })
+})
+
+HMW_popup_no.addEventListener("click",() => {
+    tableHTML.style.backgroundColor = "var(--RED)"
+    HMW_popup_wrapper.style.display = "none"
+    tableHTML.style.zIndex = 0
+    html.style.overflow = "auto"
+})
+
+HMW_popup_yes.addEventListener("click", () => {
+    addActiveTableAndContinue(tableID, tableHTML)
 })
 
 function addActiveTableAndContinue(t, tHTML){     //send table to php and continue formatting tables
@@ -50,16 +51,15 @@ function addActiveTableAndContinue(t, tHTML){     //send table to php and contin
     })
     .then(response => response.text())
     .then(data => {
-        console.log(data)
-        /*if(data == true){
+        if(data == 1){
             tHTML.style.backgroundColor = "var(--GREEN)"
             HMW_popup_wrapper.style.display = "none"
             tHTML.style.zIndex = -1
             html.style.overflow = "auto"
         } else {
-            alert("no bueno")
+            alert("C'è stato un errore durante il caricamento del tavolo, riprova.")
         }
-        */
+        
     })
     .catch(error => console.error(error));
 }

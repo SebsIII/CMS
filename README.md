@@ -34,6 +34,14 @@ The main difference between the client and the host is that, **the client can <i
 
 ## How to run the CMS [(2)](IDEAS.md)
 
+**0.** install Pre-requisites <br>
+**1.** Start Apache server <br>
+
+```
+sudo /opt/lampp/lampp start
+```
+> [!CAUTION]
+> Make sure that the `data.json` file has write privileges.
 ## V1 - JS BASED (05/05/2025)
 
 The CMS-V1 is **JS Based**, this means that most of the backend and frontend logic is made with javaScript, this is done just because of the *short time* to make sure that the first version is up and running.
