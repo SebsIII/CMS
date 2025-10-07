@@ -32,6 +32,8 @@ The pizzeria is the *main client*: When the user selects "Pizzeria (Client)" the
 
 The main difference between the client and the host is that, **the client can <ins>NOT</ins> send calls** and can not control a table, the main *host task* the client can do is **confirm that a table has been completed** and thus, the client can only operate on GREEN tables [(1)](IDEAS.md).
 
+## How to run the CMS [(2)](IDEAS.md)
+
 ## V1 - JS BASED (05/05/2025)
 
 The CMS-V1 is **JS Based**, this means that most of the backend and frontend logic is made with javaScript, this is done just because of the *short time* to make sure that the first version is up and running.
