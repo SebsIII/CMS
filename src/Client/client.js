@@ -1,12 +1,12 @@
 let tables = document.querySelectorAll(".table")
-let table,alreadyActivetables;
+let table, alreadyActivetables;
 
-let updateTimeS = 10
+import { config } from "../backend/config.js";
 
 updateTables()
 setInterval(() => {
     updateTables()
-},  updateTimeS * 1000)
+},  config.updateTimeCLIENT * 1000)
 
 async function updateTables(){
     alreadyActivetables = await getActiveTables();

@@ -5,13 +5,14 @@ let HMW_popup_wrapper = document.getElementById("HMW-popup-wrapper")
 let HMW_popup_yes = document.getElementById("HMW-popup-yes")
 let HMW_popup_no = document.getElementById("HMW-popup-no")
 
-let tableID, tableHTML, table, alreadyActivetables
-let updateTimeS = 10
+let tableHTML, table, alreadyActivetables
+
+import {config} from "../backend/config.js"
 
 updateTablesHost()
 setInterval(() => {
     updateTablesHost()
-}, updateTimeS * 1000)
+}, config.updateTimeHOST * 1000)
 
 
 async function updateTablesHost(){
