@@ -35,17 +35,32 @@ The main difference between the client and the host is that, **the client can <i
 ## How to run the CMS [(2)](IDEAS.md)
 
 **0.** install Pre-requisites <br>
-**1.** Start Apache server <br>
+**1.** Make sure to *download and extract* the CMS folder in the 'htdocs' of xampp root folder. <br>
+**2.** Start Apache server <br>
 
 ```
 sudo /opt/lampp/lampp start
 ```
 > [!CAUTION]
 > Make sure that the `data.json` file has write privileges.
-## V1 - JS BASED (05/05/2025)
+
+**3.** Visit the CMS website at:
+```
+http://localhost/CMS/src
+``` 
+
+## V1BETA - JS BASED (05/05/2025)
 
 The CMS-V1 is **JS Based**, this means that most of the backend and frontend logic is made with javaScript, this is done just because of the *short time* to make sure that the first version is up and running.
 
 Also in this version the tables heve been written *manually* for the same reasons.
 
 In the next version I'm planning to make all of the logic with **php**, since it is safer, more rubust and need less LOC to make more funcionalities.
+
+## V2 - PHP BASED (xx/xx/xxxx)
+
+In the second version of the CMS I will definitely **fix bugs** and **optimize better the code** to less-stress both the server and the clients.
+
+Also the logic will completely be implemented in **php** to make the whole syster **more robust and secure**.
+
+There will be implemented security features, like **IPA checks** and so on.
