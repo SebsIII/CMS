@@ -20,9 +20,9 @@ When a user opens up the website it is asked what type of user is it "**Kitchen 
 
 The kitchen is the *main host*: When the user selects "Kitchen (Host)" the web server will open the HMW (**Host Managment Window**) which is composed of a set of all the tables in the resturant, each table can be of 3 colors:
 
-- `#FF3131` - RED, The default value, when a table has <ins>NOT</ins> been called yet.
-- `#7ED957` - GREEN, The table has been called, when the table is in this state, under the table number will appear a **chronometer**, which shows how much time ago the host called the table.
-- `#5170FF` - BLUE, The table is currently selected, only when some operation are happening or will happen on the table.  
+- `#ff3131` - RED, The default value, when a table has <ins>NOT</ins> been called yet.
+- `#7ed957` - GREEN, The table has been called, when the table is in this state, under the table number will appear a **chronometer**, which shows how much time ago the host called the table.
+- `#5170ff` - BLUE, The table is currently selected, only when some operation are happening or will happen on the table.  
 
 The main goal of the host is to **send calls**.
 
