@@ -6,38 +6,39 @@ let HMW_popup_yes = document.getElementById("HMW-popup-yes")
 let HMW_popup_no = document.getElementById("HMW-popup-no")
 
 let tableID, tableHTML, table, alreadyActivetables
+let updateTimeS = 10
 
-//EXECUT getActiveTables.php at startup to update tables
+updateTablesHost()
+setInterval(() => {
+    updateTablesHost()
+}, updateTimeS * 1000)
 
-(async () => {
+
+async function updateTablesHost(){
     alreadyActivetables = await getActiveTables();
-    console.log(alreadyActivetables)
+    tables.forEach((table) => {
+        if(table.style.zIndex <= 1){
+            table.style.backgroundColor = "var(--RED)"
+        }
+    })
     for (let key in alreadyActivetables){
-        table = document.getElementById(key)
-        table.style.backgroundColor = "black"
+        tableLocal = document.getElementById(key)    
+        tableLocal.style.backgroundColor = "var(--GREEN)"
     }
-})();
+}
 
 tables.forEach((table) => {         //NOW THE TABLES HAVE IDs SO OPTIMIZE THIS FUNC
     table.addEventListener("click", () => {
-        tableID = null
-        tableHTML = null        //reset vars
-        if(table.id == ""){
-            tableID = table.innerHTML   //save ID to var
-        } else {
-            tableID = table.id      //the table already has ID
-        }
-        html.style.overflow = "hidden"
-        
-        table.setAttribute("id", tableID)   //add ID to table
-        tableHTML = document.getElementById(tableID)    //whole tbale HTML doc
+        tableHTML = document.getElementById(table.id)
+        if(tableHTML.style.backgroundColor != "var(--GREEN)"){
+            html.style.overflow = "hidden"
 
-        window.scroll(0, tableHTML.offsetTop - 100)
-        HMW_popup_wrapper.style.top = tableHTML.offsetTop-100 + "px"
-        HMW_popup_wrapper.style.display = "flex"
-        table.style.zIndex = 2
-        table.style.backgroundColor = "var(--BLUE)"
-        
+                window.scroll(0, tableHTML.offsetTop - 100)
+                HMW_popup_wrapper.style.top = table.offsetTop-100 + "px"
+                HMW_popup_wrapper.style.display = "flex"
+                tableHTML.style.zIndex = 2
+            tableHTML.style.backgroundColor = "var(--BLUE)"
+        }
     })
 })
 
@@ -49,7 +50,7 @@ HMW_popup_no.addEventListener("click",() => {
 })
 
 HMW_popup_yes.addEventListener("click", () => {
-    addActiveTableAndContinue(tableID, tableHTML)
+    addActiveTableAndContinue(tableHTML.id, tableHTML)
 })
 
 function addActiveTableAndContinue(t, tHTML){     //send table to php and continue formatting tables
@@ -65,7 +66,7 @@ function addActiveTableAndContinue(t, tHTML){     //send table to php and contin
         if(data == 1){
             tHTML.style.backgroundColor = "var(--GREEN)"
             HMW_popup_wrapper.style.display = "none"
-            tHTML.style.zIndex = -1
+            tHTML.style.zIndex = 0
             html.style.overflow = "auto"
         } else {
             alert("C'è stato un errore durante il caricamento del tavolo, riprova.")
@@ -93,3 +94,4 @@ async function getActiveTables(){
     }
     
 }
+
