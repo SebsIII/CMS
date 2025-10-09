@@ -107,6 +107,16 @@ header{
     margin: 0px 0px 100vh 0px;
 }
 
+.table p {
+    margin: 0px;
+}
+
+.table-time{
+    font-size: 14px;
+    color: gray;
+    font-weight: bold;
+}
+
 .table{
     position: relative;
     font-family: DCsans;
@@ -115,9 +125,10 @@ header{
     height: 10vw;
     background-color: var(--RED);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 1.5vw;
+    font-size: 2vw;
     margin: 8px;
     transition: all 0.3s;
 }

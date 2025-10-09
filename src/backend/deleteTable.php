@@ -1,9 +1,9 @@
 <?php
 if(isset($_GET["t"])){
     if(deleteTable($_GET["t"])){
-        return true;
+        echo(true);
     } else {
-        return false;
+        echo(false);
     }
 }
 

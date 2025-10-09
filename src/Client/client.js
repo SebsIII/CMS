@@ -10,11 +10,12 @@ setInterval(() => {
 
 async function updateTables(){
     alreadyActivetables = await getActiveTables();
-    console.log(alreadyActivetables)
     tables.forEach((table) => {
         table.style.backgroundColor = "var(--RED)"
+        document.getElementById("time-" + table.id).innerText = ""
     })
-    for (let key in alreadyActivetables){
+    for (let [key, value] of Object.entries(alreadyActivetables)){
+        document.getElementById("time-" + key).innerText = value.split(" ").pop()
         table = document.getElementById(key)    
         table.style.backgroundColor = "var(--GREEN)"
     }
@@ -39,9 +40,17 @@ async function getActiveTables(){
 }
 
 tables.forEach((singleTable) => {
-    singleTable.addEventListener("click", () => {
-        singleTable.style.backgroundColor = "var(--RED)"
-        console.log(deleteTable(singleTable.id))
+    singleTable.addEventListener("click", async () => {
+        if(Object.keys(alreadyActivetables).includes(singleTable.id)){
+            let DELoutput = await deleteTable(singleTable.id)
+            if(DELoutput == 1){
+                delete alreadyActivetables[singleTable.id]
+                document.getElementById("time-" + singleTable.id).innerText = ""
+                singleTable.style.backgroundColor = "var(--RED)"     
+            } else {
+                alert("c'è stato un errore nell'eliminazione del tavolo, riprova.")
+            }
+        } 
     })
 })
 
@@ -54,8 +63,7 @@ async function deleteTable(table){
                 }
             })
         const data = await response.text()
-        console.log(data)
-        //return JSON.parse(data)
+        return data
         
     } catch (error) {
         console.error(error)

@@ -17,26 +17,34 @@ setInterval(() => {
 async function updateTablesHost(){
     alreadyActivetables = await getActiveTables();
     tables.forEach((table) => {
-        if(table.style.zIndex <= 1){
+        if(table.style.zIndex <= 1){        //table in SELECTION STATE (blue one) must not became red before sending the call
             table.style.backgroundColor = "var(--RED)"
+            document.getElementById("time-" + table.id).innerText = ""
         }
     })
-    for (let key in alreadyActivetables){
-        tableLocal = document.getElementById(key)    
-        tableLocal.style.backgroundColor = "var(--GREEN)"
+    for (let [key, value] of Object.entries(alreadyActivetables)){
+        document.getElementById("time-" + key).innerText = value.split(" ").pop()
+        table = document.getElementById(key)    
+        table.style.backgroundColor = "var(--GREEN)"
     }
 }
+/*              That's something for a new version
+let i = 0
+setInterval((time) => {
+    document.getElementById("time-1").innerText = i
+    i ++
+}, 1000)
+*/
 
-tables.forEach((table) => {         //NOW THE TABLES HAVE IDs SO OPTIMIZE THIS FUNC
+tables.forEach((table) => {     
     table.addEventListener("click", () => {
         tableHTML = document.getElementById(table.id)
         if(tableHTML.style.backgroundColor != "var(--GREEN)"){
             html.style.overflow = "hidden"
-
-                window.scroll(0, tableHTML.offsetTop - 100)
-                HMW_popup_wrapper.style.top = table.offsetTop-100 + "px"
-                HMW_popup_wrapper.style.display = "flex"
-                tableHTML.style.zIndex = 2
+            window.scroll(0, tableHTML.offsetTop - 100)
+            HMW_popup_wrapper.style.top = table.offsetTop-100 + "px"
+            HMW_popup_wrapper.style.display = "flex"
+            tableHTML.style.zIndex = 2
             tableHTML.style.backgroundColor = "var(--BLUE)"
         }
     })
